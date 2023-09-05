@@ -1,39 +1,41 @@
-canvas = document.getElementById("myCanvas");
-ctx.canvas.getContext("2d");
+canvas = document.getElementById('myCanvas');
+ctx = canvas.getContext("2d");
 
 greencar_width = 75;
 greencar_height = 100;
 
-backgroundImage = "parkingLot.jpg";
-greencarImage = "car2.png";
+background_image = "parkingLot.jpg";
+greencar_image = "car2.png";
 
+//greencar_x = 75;
+//greencar_y = 325;
 greencar_x = 5;
-greencar_y = 225;
+greencar_y= 225;
 
 function add() {
-	background_imgTag = new Image();
-	background_imgTag.onload = uploadBackground;
-	background_imgTag.src = backgroundImage;
+	background_imgTag = new Image(); 				//defining a variable with a new image
+	background_imgTag.onload = uploadBackground; 	// setting a function, onloading this variable
+	background_imgTag.src = background_image;   	// load image
 
-	greencar_imgTag = new Image();
-	greencar_imgTag.onload = uploadGreenCar;
-	greencar_imgTag.src = greencarImage;
+	greencar_imgTag = new Image(); 				//defining a variable with a new image
+	greencar_imgTag.onload = uploadgreencar; 	// setting a function, onloading this variable
+	greencar_imgTag.src = greencar_image;  		 // load image
+
 }
 
 function uploadBackground() {
 	ctx.drawImage(background_imgTag, 0, 0, canvas.width, canvas.height);
 }
 
-function uploadGreenCar() {
-	ctx.drawImage(greencar_imgTag, greencar_x, greencar_y, greencar_width, greencar_height);
-
+function uploadgreencar() {
+	ctx.drawImage(greencar_imgTag, greencar_x,greencar_y, greencar_width, greencar_height);
 	
 }
 
 
-window.addEventListener("keydown", myKeyDown);
+window.addEventListener("keydown", my_keydown);
 
-function myKeyDown(e)
+function my_keydown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
@@ -66,40 +68,48 @@ function myKeyDown(e)
 
 function up()
 {
-	if(greencar_y >=0){
-		greencar_y = greencar_y - 10
-		console.log("Seta para cima precionada")
-		uploadBackground();
-		uploadGreenCar();
+	if(greencar_y >=0)
+	{
+		greencar_y = greencar_y - 10;
+		console.log("When up arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
+		 uploadBackground();
+		 uploadgreencar();
+		
 	}
 }
 
 function down()
 {
-	if(greencar_y >=350){
-		greencar_y = greencar_y + 10
-		console.log("Seta para baixo precionada")
+	if(greencar_y <=350)
+	{
+		greencar_y =greencar_y+ 10;
+		console.log("When down arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
 		uploadBackground();
-		uploadGreenCar();
+		uploadgreencar();
+		
 	}
 }
 
 function left()
 {
-	if(greencar_x >=0){
-		greencar_x = greencar_x - 10
-		console.log("Seta para esquerda precionada")
+	if(greencar_x >= 0)
+	{
+		greencar_x =greencar_x - 10;
+		console.log("When left arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
 		uploadBackground();
-		uploadGreenCar();
+		 uploadgreencar();
+		
 	}
 }
 
 function right()
 {
-	if(greencar_x >=750){
-		greencar_x = greencar_x - 10
-		console.log("Seta para direita precionada")
+	if(greencar_x <= 750)
+	{
+		greencar_x =greencar_x + 10;
+		console.log("When right arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
 		uploadBackground();
-		uploadGreenCar();
-	}
+		uploadgreencar();
+		
+   }
 }
